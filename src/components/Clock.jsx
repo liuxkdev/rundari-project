@@ -20,5 +20,5 @@ export default function Clock() {
         return () => clearInterval(interval); // limpiar al desmontar
     }, []);
 
-    return <p className="font-medium text-7xl">{time}</p>;
+    return <p className="font-medium text-7xl font-poppins">{time}</p>;
 }
