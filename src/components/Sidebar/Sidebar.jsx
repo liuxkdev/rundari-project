@@ -1,14 +1,18 @@
 import Nav from "./Nav";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, toggleSidebar }) {
     return (
-        <aside className="grid grid-rows-[auto_1fr_auto]">
+        <aside
+            className={`sm:shadow-none shadow-xl fixed sm:static bg-white h-full w-[240px] z-40 transform transition-transform duration-300 ${
+                isOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
+            }`}
+        >
             <header className="px-4 pt-4">
                 <div className="flex justify-between border-b-gray-300 border-b pb-4 items-center">
                     <h1 className="font-savate text-xl text-logo font-semibold">
                         RUNDARI
                     </h1>
-                    <button className="hidden">
+                    <button className="sm:hidden cursor-pointer" onClick={ toggleSidebar }>
                         <i className="bxr  bxs-x bx-rotate-180"></i>
                     </button>
                 </div>
