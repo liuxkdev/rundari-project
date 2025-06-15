@@ -10,7 +10,7 @@ import Config from "./pages/Config";
 
 export default function MainContent({ toggleSidebar }) {
     return (
-        <main className="grid grid-rows-[auto_1fr]">
+        <main className="grid grid-rows-[auto_1fr] min-h-[100dvh]">
             <Routes>
                 <Route
                     path="/"
@@ -64,7 +64,7 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
             </Routes>
-            <section className="rounded-t-xl inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] p-4 overflow-auto">
+            <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] p-4 overflow-auto">
                 <div>
                     <Routes>
                         <Route path="/" element={<Home />}></Route>

@@ -3,7 +3,7 @@ import Nav from "./Nav";
 export default function Sidebar({ isOpen, toggleSidebar }) {
     return (
         <aside
-            className={`sm:shadow-none shadow-xl fixed sm:static bg-white h-full w-[240px] z-40 transform transition-transform duration-300 ${
+            className={`sm:shadow-none shadow-xl fixed sm:static bg-white h-full w-[240px] z-40 transform transition-transform duration-300 grid grid-rows-[auto_1fr_auto] rounded-tr-2xl ease-in-out ${
                 isOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
             }`}
         >
