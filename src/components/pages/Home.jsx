@@ -5,7 +5,7 @@ import NavHome from "../NavHome/NavHome";
 export default function Home() {
     return (
         <>
-            <div className="m-8 flex flex-col items-center">
+            <div className="flex flex-col items-center mb-6">
                 <CurrentDate />
                 <Clock />
             </div>
