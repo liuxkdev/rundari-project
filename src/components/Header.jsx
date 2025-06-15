@@ -5,7 +5,7 @@ export default function Header({ title, toggleSidebar }) {
                 onClick={toggleSidebar}
                 className="sm:hidden mr-10 cursor-pointer"
             >
-                <i class="bxr bx-menu-wide text-xl"></i>
+                <i className="bxr bx-menu-wide text-xl"></i>
             </button>
             <div>
                 <h2 className="font-poppins text-xl font-medium">{title}</h2>

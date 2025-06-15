@@ -13,11 +13,13 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         RUNDARI
                     </h1>
                     <button className="sm:hidden cursor-pointer" onClick={ toggleSidebar }>
-                        <i className="bxr  bxs-x bx-rotate-180"></i>
+                        <i className="bxr  bxs-x"></i>
                     </button>
                 </div>
             </header>
-            <Nav />
+            <Nav 
+                toggleSidebar={ toggleSidebar }
+            />
             <footer className="p-4 max-w-full">
                 <div className="border-t-gray-300 border-t pt-4">
                     <div className="p-3 bg-gray-100 rounded-xl">

@@ -1,85 +1,49 @@
 import { NavLink } from "react-router-dom";
+import NavLinkClient from "./NavLinkClient";
 
-export default function Nav() {
+export default function Nav({ toggleSidebar }) {
     return (
         <nav className="py-4">
             <ul>
                 <li className="mb-1">
-                    <NavLink
-                        to="/"
-                        href="#"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr bxs-home-alt bx-rotate-180 bx-flip-horizontal text-xl mr-3"></i>
-                        <span>Inicio</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/"
+                        icon="bxr bxs-home-alt"
+                        text="Inicio"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
                 <li className="mb-1">
-                    <NavLink
-                        to="/materias"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr bxs-book mr-3 text-xl"></i>
-                        <span>Materias</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/schedule"
+                        icon="bxr bxs-calendar-alt"
+                        text="Horario"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
                 <li className="mb-1">
-                    <NavLink
-                        to="/horario"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr bxs-calendar-alt mr-3 text-xl"></i>
-                        <span>Horario</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/subjects"
+                        icon="bxr bxs-book"
+                        text="Materias"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
                 <li className="mb-1">
-                    <NavLink
-                        to="/tareas"
-                        href="#"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr bxs-checklist mr-3 text-xl"></i>
-                        <span>Tareas</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/tasks"
+                        icon="bxr bxs-checklist"
+                        text="Tareas"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
                 <li className="mb-1">
-                    <NavLink
-                        to="faltas"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr bx-chart-bar-rows mr-3 text-xl"></i>
-                        <span>Faltas</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/absences"
+                        icon="bxr bxs-chart-bar-rows"
+                        text="Faltas"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
             </ul>
             <div className="px-4">
@@ -87,34 +51,20 @@ export default function Nav() {
             </div>
             <ul>
                 <li className="my-1">
-                    <NavLink
-                        to="notificaciones"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr  bxs-bell mr-3 text-xl"></i>
-                        <span>Notificaciones</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/notifications"
+                        icon="bxr bxs-bell"
+                        text="Notificaciones"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
                 <li className="mb-1">
-                    <NavLink
-                        to="configuracion"
-                        className={({ isActive }) =>
-                            `flex px-4 py-3 font-poppins items-center text-gray-600 rounded-lg hover:bg-gray-100 ${
-                                isActive
-                                    ? "bg-logo/10 text-logo rounded-l-lg hover:bg-logo/10"
-                                    : ""
-                            }`
-                        }
-                    >
-                        <i className="bxr  bxs-cog mr-3 text-xl"></i>
-                        <span>Configuración</span>
-                    </NavLink>
+                    <NavLinkClient
+                        target="/settings"
+                        icon="bxr bxs-cog"
+                        text="Configuración"
+                        toggleSidebar={toggleSidebar}
+                    />
                 </li>
             </ul>
         </nav>

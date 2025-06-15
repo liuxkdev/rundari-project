@@ -10,7 +10,11 @@ function CurrentDate() {
     const capitalized =
         formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
-    return <p className="font-poppins font-medium text-lg">{capitalized}</p>;
+    return (
+        <p className="text-sm font-poppins text-gray-600">
+            {capitalized}
+        </p>
+    );
 }
 
 export default CurrentDate;

@@ -19,7 +19,13 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
                 <Route
-                    path="/materias"
+                    path="/schedule"
+                    element={
+                        <Header title="Horario" toggleSidebar={toggleSidebar} />
+                    }
+                ></Route>
+                <Route
+                    path="/subjects"
                     element={
                         <Header
                             title="Materias"
@@ -28,25 +34,19 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
                 <Route
-                    path="/horario"
-                    element={
-                        <Header title="Horario" toggleSidebar={toggleSidebar} />
-                    }
-                ></Route>
-                <Route
-                    path="/tareas"
+                    path="/tasks"
                     element={
                         <Header title="Tareas" toggleSidebar={toggleSidebar} />
                     }
                 ></Route>
                 <Route
-                    path="/faltas"
+                    path="/absences"
                     element={
                         <Header title="Faltas" toggleSidebar={toggleSidebar} />
                     }
                 ></Route>
                 <Route
-                    path="/notificaciones"
+                    path="/notifications"
                     element={
                         <Header
                             title="Notificaciones"
@@ -55,7 +55,7 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
                 <Route
-                    path="/configuracion"
+                    path="/settings"
                     element={
                         <Header
                             title="Configuración"
@@ -64,20 +64,20 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
             </Routes>
-            <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] p-4 overflow-auto">
+            <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] overflow-auto">
                 <div>
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="/materias" element={<Subjects />}></Route>
-                        <Route path="/horario" element={<Schedule />}></Route>
-                        <Route path="/tareas" element={<Tasks />}></Route>
-                        <Route path="/faltas" element={<Absences />}></Route>
+                        <Route path="/subjects" element={<Subjects />}></Route>
+                        <Route path="/schedule" element={<Schedule />}></Route>
+                        <Route path="/tasks" element={<Tasks />}></Route>
+                        <Route path="/absences" element={<Absences />}></Route>
                         <Route
-                            path="/notificaciones"
+                            path="/notifications"
                             element={<Notifications />}
                         ></Route>
                         <Route
-                            path="/configuracion"
+                            path="/settings"
                             element={<Config />}
                         ></Route>
                     </Routes>

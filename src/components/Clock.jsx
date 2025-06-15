@@ -10,7 +10,6 @@ export default function Clock() {
                 hour12: false,
                 hour: "2-digit",
                 minute: "2-digit",
-                second: "2-digit",
             });
             setTime(formatted);
         };
@@ -21,5 +20,5 @@ export default function Clock() {
         return () => clearInterval(interval); // limpiar al desmontar
     }, []);
 
-    return <p className="text-sm font-poppins text-gray-600">{time}</p>;
+    return <p className="font-medium text-7xl">{time}</p>;
 }
