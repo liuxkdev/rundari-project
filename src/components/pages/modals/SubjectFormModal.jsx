@@ -64,7 +64,7 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                         </div>
                         <div className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4 text-gray-700 w-full">
                             <div
-                                className={`rounded-full bg-${colorSelected} w-6 h-6 cursor-pointer mr-8 outline-gray-700 outline-2`}
+                                className={`rounded-full bgcolor-${colorSelected} w-6 h-6 cursor-pointer mr-8 outline-gray-700 outline-2`}
                                 onClick={() => setIsColorPickerOpen(true)}
                             ></div>
                             <span
@@ -143,7 +143,7 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                         <button
                             key={color}
                             type="button"
-                            className={`bg-${color} cursor-pointer rounded-xl`}
+                            className={`bgcolor-${color} cursor-pointer rounded-xl`}
                             onClick={() => {
                                 setColorSelected(color);
                                 setIsColorPickerOpen(false);

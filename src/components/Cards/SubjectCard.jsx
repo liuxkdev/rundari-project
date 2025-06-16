@@ -2,9 +2,9 @@ export default function SubjectCard({ subject }) {
     const { name, color, teacher } = subject;
 
     return (
-        <div className="p-4 rounded-xl shadow-md border border-gray-200 flex items-center gap-4">
+        <div className={`p-4 rounded-xl shadow-md borderflex items-center gap-4 border-color-${color} border-l-4`}>
             <div
-                className={`w-6 h-6 rounded-full bg-${color}`}
+                className={`w-6 h-6 rounded-full bgcolor-${color}`}
                 title={color}
             ></div>
             <div>

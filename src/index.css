@@ -1,14 +1,61 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-savate: "Savate";
-  --font-poppins: "Poppins";
+    --font-savate: "Savate";
+    --font-poppins: "Poppins";
 
-  --color-logo: #2e6ca3;
-  --color-blue: #809bce;
-  --color-blue-light: #95b8d1;
-  --color-green: #b8e0d2;
-  --color-green-light: #d6eadf;
-  --color-red: #eac4d5; 
-  --color-yellow: #fcf5c7
+    --color-logo: #2e6ca3;
+    --color-blue: #809bce;
+    --color-blue-light: #95b8d1;
+    --color-green: #b8e0d2;
+    --color-green-light: #d6eadf;
+    --color-red: #eac4d5;
+    --color-yellow: #fcf5c7;
+}
+
+.bgcolor-blue {
+    background-color: #809bce;
+}
+.border-color-blue {
+    border-color: #809bce;
+}
+
+.bgcolor-blue-light {
+    background-color: #95b8d1;
+}
+
+.border-color-blue-light {
+    border-color: #95b8d1;
+}
+
+.bgcolor-green {
+    background-color: #b8e0d2;
+}
+
+.border-color-green {
+    border-color: #b8e0d2;
+}
+
+.bgcolor-green-light {
+    background-color: #d6eadf;
+}
+
+.border-color-green-light {
+    border-color: #d6eadf;
+}
+
+.bgcolor-red {
+    background-color: #eac4d5;
+}
+
+.border-color-red {
+    border-color: #eac4d5;
+}
+
+.bgcolor-yellow {
+    background-color: #fcf5c7;
+}
+
+.border-color-yellow {
+    border-color: #fcf5c7;
 }
