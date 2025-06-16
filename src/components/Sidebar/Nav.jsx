@@ -25,7 +25,7 @@ export default function Nav({ toggleSidebar }) {
                     <NavLinkClient
                         target="/subjects"
                         icon="bxr bxs-book"
-                        text="Materias"
+                        text="Asignaturas"
                         toggleSidebar={toggleSidebar}
                     />
                 </li>
