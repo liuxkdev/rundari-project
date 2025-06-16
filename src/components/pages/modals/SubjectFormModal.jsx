@@ -50,14 +50,12 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                     </h2>
                 </header>
                 <div className="mt-10">
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4 text-gray-700 w-full">
                             <div className="w-6 h-6 mr-8"></div>
                             <input
                                 type="text"
                                 placeholder="Añadir nombre"
-                                value={subjectName}
-                                onChange={(e) => setSubjectName(e.target.value)}
                                 required
                                 className="text-base outline-0 font-poppins placeholder:text-gray-700 text-gray-700"
                             />
@@ -81,8 +79,6 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                             <input
                                 type="text"
                                 placeholder="Añadir profesor"
-                                value={teacherName}
-                                onChange={(e) => setTeacherName(e.target.value)}
                                 className="text-base outline-0 placeholder:text-gray-700 font-poppins border-gray-500 text-gray-700"
                             />
                         </div>
