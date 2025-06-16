@@ -2,7 +2,7 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
     return (
         <div
             className={`fixed inset-0 bg-white transition-transform sm:transition-all
-                duration-300 transform z-40 rounded-t-3xl grid px-4 py-6 grid-rows-[auto_1fr] sm:w-100 sm:m-auto sm:h-min sm:rounded-3xl ${
+                duration-300 transform z-40 grid px-4 py-6 grid-rows-[auto_1fr] sm:w-100 sm:m-auto sm:h-min sm:rounded-3xl ${
                     isFormOpen
                         ? "translate-y-0 sm:scale-100 sm:opacity-100 sm:translate-y-0"
                         : "translate-y-full sm:scale-50 sm:opacity-0 sm:translate-y-0"

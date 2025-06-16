@@ -68,10 +68,10 @@ export default function MainContent({ toggleSidebar }) {
                 <div>
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="/schedule/*" element={<Schedule />}></Route>
-                        <Route path="/subjects/*" element={<Subjects />}></Route>
-                        <Route path="/tasks/*" element={<Tasks />}></Route>
-                        <Route path="/absences/*" element={<Absences />}></Route>
+                        <Route path="/schedule" element={<Schedule />}></Route>
+                        <Route path="/subjects" element={<Subjects />}></Route>
+                        <Route path="/tasks" element={<Tasks />}></Route>
+                        <Route path="/absences" element={<Absences />}></Route>
                         <Route
                             path="/notifications"
                             element={<Notifications />}
