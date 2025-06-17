@@ -22,11 +22,21 @@ export default function Subjects() {
     };
 
     const handleDeleteSubject = (idToDelete) => {
+        // Actualizar materias
         const updatedSubjects = subjects.filter(
             (subject) => subject.id !== idToDelete
         );
         setSubjects(updatedSubjects);
         localStorage.setItem("subjects", JSON.stringify(updatedSubjects));
+
+        // Actualizar faltas (absences)
+        const storedAbsences =
+            JSON.parse(localStorage.getItem("absences")) || [];
+        const updatedAbsences = storedAbsences.filter(
+            (absence) => absence.subjectId !== idToDelete
+        );
+        localStorage.setItem("absences", JSON.stringify(updatedAbsences));
+
     };
 
     return (
@@ -52,7 +62,7 @@ export default function Subjects() {
                 toggleFormOpen={handleCloseForm}
             />
 
-            <section className="p-4 mt-4 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {subjects.length === 0 ? (
                     <p className="text-gray-600 font-poppins">
                         No hay asignaturas guardadas.

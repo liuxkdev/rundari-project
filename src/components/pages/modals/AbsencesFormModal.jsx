@@ -2,14 +2,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AbsenceCategorySelector from "../../Selectors/AbsenceCategorySelector";
 import SubjectSelector from "../../Selectors/SubjectSelector";
+import LimitSelector from "../../Selectors/AbsencesLimitSelector";
 
-export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
+export default function AbsenceFormModal({
+    isFormOpen,
+    toggleFormOpen,
+    onLimitsUpdate,
+}) {
     const [isSelectCategoryOpen, setIsSelectCategoryOpen] = useState(false);
     const [isSelectSubjectOpen, setIsSelectSubjectOpen] = useState(false);
     const [attendanceType, setAttendanceType] = useState("");
     const [tempAttendanceType, setTempAttendanceType] = useState("");
-    const [subject, setSubject] = useState("");
-    const [tempSubject, setTempSubject] = useState("");
+    // Cambiamos a objeto para guardar id y nombre
+    const [subject, setSubject] = useState(null);
+    const [tempSubject, setTempSubject] = useState(null);
     const [reason, setReason] = useState("");
     const [date, setDate] = useState("");
 
@@ -22,14 +28,16 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
         }
     };
 
-    const handleSubjectSelect = () => {
-        if (tempSubject) {
-            setSubject(tempSubject);
+    // Ahora recibe un objeto {id, name}
+    const handleSubjectSelect = (selectedSubject) => {
+        if (selectedSubject && selectedSubject.id) {
+            setSubject(selectedSubject);
             setIsSelectSubjectOpen(false);
         } else {
             alert("Selecciona una asignatura antes de continuar.");
         }
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -41,7 +49,8 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
         const absence = {
             id: Date.now(),
             type: attendanceType,
-            subject,
+            subjectId: subject.id,
+            subjectName: subject.name,
             reason: reason.trim(),
             date,
         };
@@ -51,6 +60,7 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
         localStorage.setItem("absences", JSON.stringify(saved));
 
         handleClose();
+        onLimitsUpdate; // Llamar a la función de actualización
     };
 
     const handleClose = () => {
@@ -59,7 +69,8 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
         setTempAttendanceType("");
         setReason("");
         setDate("");
-        setSubject("");
+        setSubject(null);
+        setTempSubject(null);
         setIsSelectCategoryOpen(false);
         setIsSelectSubjectOpen(false);
     };
@@ -113,12 +124,15 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
                         <div
                             className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4 text-gray-700 w-full"
                             onClick={() => {
+                                setTempSubject(subject);
                                 setIsSelectSubjectOpen(true);
                             }}
                         >
                             <i className="bxr bx-book-bookmark text-2xl cursor-pointer mr-8"></i>
                             <span className="font-poppins text-base cursor-text">
-                                {subject || "Seleccionar asignatura"}
+                                {subject
+                                    ? subject.name
+                                    : "Seleccionar asignatura"}
                             </span>
                         </div>
 
@@ -156,7 +170,7 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
                             <input
                                 type="submit"
                                 value="Guardar"
-                                className="px-4 py-2 text-base font-poppins w-full bg-blue text-white rounded-lg cursor-pointer"
+                                className="px-4 py-2 text-base font-poppins w-full bg-logo text-white rounded-lg cursor-pointer"
                             />
                         </div>
                     </form>
@@ -197,6 +211,7 @@ export default function AbsenceFormModal({ isFormOpen, toggleFormOpen }) {
                 tempSubject={tempSubject}
                 handleSubjectSelect={handleSubjectSelect}
             />
+            <LimitSelector />
         </div>
     );
 }

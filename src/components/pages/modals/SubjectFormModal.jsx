@@ -6,14 +6,20 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
     const [colorSelected, setColorSelected] = useState("blue");
     const [subjectName, setSubjectName] = useState("");
     const [teacherName, setTeacherName] = useState("");
-
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!subjectName.trim() || !teacherName.trim() || !colorSelected) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
 
         const newSubject = {
             id: crypto.randomUUID(),
             name: subjectName,
             color: colorSelected,
+            limitOfAbsences: 14,
+            limitOfDelays: 14,
             teacher: teacherName,
         };
 
@@ -91,7 +97,7 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                             <input
                                 type="submit"
                                 value="Guardar"
-                                className="px-4 py-2 text-base font-poppins w-full bg-blue text-white rounded-lg cursor-pointer"
+                                className="px-4 py-2 text-base font-poppins w-full bg-logo text-white rounded-lg cursor-pointer"
                             />
                         </div>
                     </form>

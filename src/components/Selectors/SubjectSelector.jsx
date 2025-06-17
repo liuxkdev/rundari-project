@@ -14,14 +14,14 @@ export default function SubjectSelector({
         setSubjects(savedSubjects);
     }, []);
 
-    const handleSelection = (subjectName) => {
-        setTempSubject(subjectName);
-        handleSubjectSelect();
+    const handleSelection = (subject) => {
+        setTempSubject(subject); // guardamos el objeto completo
+        handleSubjectSelect(subject); // pasamos el objeto completo al padre
     };
 
     return (
         <div
-            className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-40 rounded-t-3xl py-6 px-10 flex flex-col flex-start min-h-100 sm:hidden shadow-[0_-1rem_1rem_#0000001f] ${
+            className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-40 rounded-t-3xl py-6 px-10 flex flex-col flex-start h-min sm:hidden shadow-[0_-1rem_1rem_#0000001f] ${
                 isSelectSubjectOpen ? "translate-y-0" : "translate-y-full"
             }`}
         >
@@ -56,7 +56,7 @@ export default function SubjectSelector({
                             <div
                                 key={subject.id}
                                 className="flex items-center bg-gray-100 cursor-pointer p-4 rounded-lg"
-                                onClick={() => handleSelection(subject.name)}
+                                onClick={() => handleSelection(subject)} // <-- aquí enviamos el objeto entero
                             >
                                 <div
                                     className={`bgcolor-${subject.color} h-4 w-4 rounded-full`}

@@ -3,7 +3,7 @@ export default function SubjectCard({ subject, onDelete }) {
 
     return (
         <div
-            className={`p-4 rounded-xl shadow-md flex items-center justify-between gap-4 border-color-${color} border-l-16`}
+            className={`p-4 rounded-xl shadow-md flex items-center justify-between gap-4 border-color-${color} border-l-16 bg-white`}
         >
             <div>
                 <div className="flex justify-between items-center">
