@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
-
- 
-
-
     const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
     const [colorSelected, setColorSelected] = useState("blue");
 
     return (
-       <div
+        <div
             className={`fixed inset-0 bg-white transition-transform sm:transition-all
                 duration-300 transform z-40 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl shadow-lg ${
                     isFormOpen
@@ -62,7 +58,7 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
                             />
                         </div>
 
-<div className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4 text-gray-700 w-full">
+                        <div className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4 text-gray-700 w-full">
                             <div className="w-6 h-6 mr-8"></div>
                             <input
                                 type="text"

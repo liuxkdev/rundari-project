@@ -21,6 +21,14 @@ export default function Subjects() {
         setSubjects(updatedSubjects);
     };
 
+    const handleDeleteSubject = (idToDelete) => {
+        const updatedSubjects = subjects.filter(
+            (subject) => subject.id !== idToDelete
+        );
+        setSubjects(updatedSubjects);
+        localStorage.setItem("subjects", JSON.stringify(updatedSubjects));
+    };
+
     return (
         <>
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
@@ -54,6 +62,7 @@ export default function Subjects() {
                         <SubjectCard
                             key={subject.id}
                             subject={subject}
+                            onDelete={handleDeleteSubject} // ← PASAMOS LA FUNCIÓN AQUÍ
                         />
                     ))
                 )}
