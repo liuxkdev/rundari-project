@@ -34,8 +34,8 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
             className={`fixed inset-0 bg-white transition-transform sm:transition-all
                 duration-300 transform z-40 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl shadow-lg ${
                     isFormOpen
-                        ? "translate-y-0 sm:scale-100 sm:opacity-100 sm:translate-y-0"
-                        : "translate-y-full sm:scale-50 sm:opacity-0 sm:translate-y-0"
+                        ? "translate-y-0 sm:scale-100 sm:opacity-100 "
+                        : "translate-y-full sm:scale-50 sm:opacity-0 "
                 }`}
         >
             <div className="flex justify-between items-center">
@@ -91,7 +91,7 @@ export default function SubjectFormModal({ isFormOpen, toggleFormOpen }) {
                             <input
                                 type="submit"
                                 value="Guardar"
-                                className="px-4 py-2 text-base font-poppins w-full bg-blue text-white rounded-lg"
+                                className="px-4 py-2 text-base font-poppins w-full bg-blue text-white rounded-lg cursor-pointer"
                             />
                         </div>
                     </form>
