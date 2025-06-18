@@ -44,7 +44,7 @@ export default function DelaysLimitSelector({
                 duration-300 transform z-40 rounded-t-3xl p-10 flex flex-col flex-start h-min shadow-[0_-1rem_1rem_#0000001f] ${
                     isLimitSelectorOpen
                         ? "translate-y-0 sm:opacity-100 sm:scale-100"
-                        : "translate-y-full sm:opacity-0 sm:scale-50"
+                        : "translate-y-[150%] sm:opacity-0 sm:scale-50"
                 }`}
         >
             <div className="flex justify-center mb-3 sm:hidden">

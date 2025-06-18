@@ -85,7 +85,7 @@ export default function AbsenceFormModal({
 
     return (
         <div
-            className={`fixed w-screen inset-0 h-[100dvh] bg-white transition-transform sm:transition-all duration-300 transform z-40 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl shadow-lg ${
+            className={`fixed w-screen inset-0 h-[100dvh] bg-white transition-transform sm:transition-all duration-300 transform z-40 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl ${
                 isFormOpen
                     ? "translate-y-0 sm:scale-100 sm:opacity-100"
                     : "translate-y-full sm:scale-50 sm:opacity-0"
