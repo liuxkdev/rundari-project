@@ -1,28 +1,26 @@
-import RecentAbsence from "./RecentAbsence";
+import AbsenceCard from "./AbsenceCard";
 
-export default function RecentAbsencesCard({ recentAbsences, handleDeleteAbsence }) {
+export default function AllAbsencesCard({recentAbsences, handleDeleteAbsence}) {
     return (
-        <section className="bg-white p-4 rounded-2xl shadow-md h-min">
-            <header className="mb-4">
-                <h3 className="font-semibold text-xl font-poppins">
-                    Recientes
-                </h3>
+        <article className="lg:col-span-2 xl:col-span-1">
+            <header>
+                <h3 className="font-semibold text-xl font-poppins">Todas</h3>
             </header>
-            <div className="flex flex-col gap-4">
+            <section className="flex flex-col gap-4 mt-4">
                 {recentAbsences.length === 0 ? (
                     <p className="text-gray-600 font-poppins">
                         No hay faltas registradas.
                     </p>
                 ) : (
                     recentAbsences.map((absence) => (
-                        <RecentAbsence
+                        <AbsenceCard
                             key={absence.id}
                             absence={absence}
                             onDelete={handleDeleteAbsence}
                         />
                     ))
                 )}
-            </div>
-        </section>
+            </section>
+        </article>
     );
 }

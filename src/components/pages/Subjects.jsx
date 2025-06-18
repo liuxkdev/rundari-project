@@ -3,6 +3,8 @@ import SubjectFormModal from "./modals/SubjectFormModal";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SubjectCard from "../Cards/SubjectCard";
+import PageNull from "../PageNull";
+import { sub } from "framer-motion/m";
 
 export default function Subjects() {
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -61,11 +63,18 @@ export default function Subjects() {
                 toggleFormOpen={handleCloseForm}
             />
 
-            <section className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))]">
+            <section
+                className={`grid gap-4  ${
+                    subjects.length > 0
+                        ? "grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]"
+                        : "grid-cols-1 h-full"
+                }`}
+            >
                 {subjects.length === 0 ? (
-                    <p className="text-gray-600 font-poppins">
-                        No hay asignaturas guardadas.
-                    </p>
+                    <PageNull
+                        title={"Sin asignaturas"}
+                        text={"Aquí aparecerán las asignaturas que añadas"}
+                    />
                 ) : (
                     subjects.map((subject) => (
                         <SubjectCard

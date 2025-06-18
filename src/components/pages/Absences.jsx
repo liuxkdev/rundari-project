@@ -7,7 +7,8 @@ import AbsencesLimitSelector from "../Selectors/AbsencesLimitSelector";
 import DelaysLimitSelector from "../Selectors/DelaysLimitSelector";
 import { motion, AnimatePresence } from "framer-motion";
 import RecentAbsencesCard from "../Cards/RecentAbsencesCard";
-import AbsenceCard from "../Cards/AbsenceCard";
+import PageNull from "../PageNull";
+import AllAbsencesCard from "../Cards/AllAbsencesCard";
 
 export default function Absences() {
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -19,9 +20,9 @@ export default function Absences() {
     const [absencesBySubject, setAbsencesBySubject] = useState({});
     const [delaysBySubject, setDelaysBySubject] = useState({});
 
+    const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
     const loadAbsences = () => {
         const stored = JSON.parse(localStorage.getItem("absences")) || [];
-        const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
 
         // Enriquecer cada ausencia con color y nombre de asignatura
         const enrichedAbsences = stored.map((absence) => {
@@ -95,7 +96,11 @@ export default function Absences() {
     };
 
     return (
-        <div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2">
+        <div
+            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 ${
+                subjects.length > 0 ? "" : "h-full"
+            }`}
+        >
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
             <AnimatePresence>
@@ -140,47 +145,55 @@ export default function Absences() {
                 }
                 onLimitsUpdated={loadAbsences}
             />
-            <div className="grid gap-4">
-                <AbsencesPerSubjectCard
-                    absencesBySubject={absencesBySubject}
-                    setIsLimitSelectorOpen={() =>
-                        setIsAbsencesLimitSelectorOpen(true)
-                    }
-                />
+            {subjects.length > 0 ? (
+                <>
+                    <div className="grid gap-4">
+                        <AbsencesPerSubjectCard
+                            absencesBySubject={absencesBySubject}
+                            setIsLimitSelectorOpen={() =>
+                                setIsAbsencesLimitSelectorOpen(true)
+                            }
+                        />
 
-                <DelaysPerSubjectCard
-                    delaysBySubject={delaysBySubject}
-                    setIsLimitSelectorOpen={() =>
-                        setIsDelaysLimitSelectorOpen(true)
-                    }
-                />
-            </div>
-            <RecentAbsencesCard
-                absences={absences}
-                handleDeleteAbsence={handleDeleteAbsence}
-            />
-            <article className="lg:col-span-2 xl:col-span-1">
-                <header>
-                    <h3 className="font-semibold text-xl font-poppins">
-                        Todas
-                    </h3>
-                </header>
-                <section className="flex flex-col gap-4 mt-4">
-                    {recentAbsences.length === 0 ? (
-                        <p className="text-gray-600 font-poppins">
-                            No hay faltas registradas.
-                        </p>
-                    ) : (
-                        recentAbsences.map((absence) => (
-                            <AbsenceCard
-                                key={absence.id}
-                                absence={absence}
-                                onDelete={handleDeleteAbsence}
+                        <DelaysPerSubjectCard
+                            delaysBySubject={delaysBySubject}
+                            setIsLimitSelectorOpen={() =>
+                                setIsDelaysLimitSelectorOpen(true)
+                            }
+                        />
+                    </div>
+                    {recentAbsences.length > 0 ? (
+                        <>
+                            <RecentAbsencesCard
+                                recentAbsences={recentAbsences}
+                                handleDeleteAbsence={handleDeleteAbsence}
                             />
-                        ))
+                            <AllAbsencesCard
+                                recentAbsences={recentAbsences}
+                                handleDeleteAbsence={handleDeleteAbsence}
+                            />
+                        </>
+                    ) : (
+                        <div className="flex xl:col-span-2">
+                            <PageNull
+                                title={"Sin faltas"}
+                                text={
+                                    "Registra cuándo te ausentaste o llegaste tarde a clases"
+                                }
+                            />
+                        </div>
                     )}
-                </section>
-            </article>
+                </>
+            ) : (
+                <div className="flex xl:col-span-3">
+                    <PageNull
+                        title={"Sin faltas"}
+                        text={
+                            "Registra cuándo te ausentaste o llegaste tarde a clases"
+                        }
+                    />
+                </div>
+            )}
         </div>
     );
 }
