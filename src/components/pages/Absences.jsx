@@ -183,7 +183,7 @@ export default function Absences() {
                     )}
                 </>
             ) : (
-                <div className="flex xl:col-span-3 h-[calc(100dvh-108px)]">
+                <div className="flex xl:col-span-3 h-[calc(100svh-108px)]">
                     <PageNull
                         title={"Sin faltas"}
                         text={
