@@ -9,7 +9,7 @@ function App() {
 
     return (
         <Router>
-            <div className="grid h-[100dvh] sm:grid-cols-[240px_1fr]">
+            <div className="grid h-[100svh] sm:grid-cols-[240px_1fr]">
                 <Sidebar
                     isOpen={sidebarOpen}
                     toggleSidebar={() => setSidebarOpen(!sidebarOpen)}

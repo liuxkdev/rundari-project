@@ -10,7 +10,7 @@ import Config from "./pages/Config";
 
 export default function MainContent({ toggleSidebar }) {
     return (
-        <main className="grid grid-rows-[auto_1fr] min-h-[100dvh]">
+        <main className="grid grid-rows-[auto_1fr] min-h-[100svh]">
             <Routes>
                 <Route
                     path="/"
