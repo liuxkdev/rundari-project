@@ -3,7 +3,7 @@ import NavLinkClient from "./NavLinkClient";
 
 export default function Nav({ toggleSidebar }) {
     return (
-        <nav className="py-4">
+        <nav className="py-4 overflow-y-auto">
             <ul>
                 <li className="mb-1">
                     <NavLinkClient
