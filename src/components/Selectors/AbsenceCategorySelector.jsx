@@ -2,7 +2,7 @@ export default function AbsenceCategorySelector({isSelectCategoryOpen, closeCate
     return (
             <div
                 className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-40 rounded-t-3xl py-6 px-10 flex flex-col flex-start h-min sm:hidden shadow-[0_-1rem_1rem_#0000001f] ${
-                    isSelectCategoryOpen ? "translate-y-0" : "translate-y-full"
+                    isSelectCategoryOpen ? "translate-y-[-50%]" : "translate-y-full"
                 }`}
             >
                 <div className="flex justify-center mb-3">
