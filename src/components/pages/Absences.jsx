@@ -97,9 +97,7 @@ export default function Absences() {
 
     return (
         <div
-            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 ${
-                subjects.length > 0 ? "" : "h-[calc(100dhv-60px)]"
-            }`}
+            className="`grid gap-4 xl:grid-cols-3 lg:grid-cols-2"
         >
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
@@ -185,7 +183,7 @@ export default function Absences() {
                     )}
                 </>
             ) : (
-                <div className="flex xl:col-span-3">
+                <div className="flex xl:col-span-3 h-[calc(100dvh-108px)]">
                     <PageNull
                         title={"Sin faltas"}
                         text={
