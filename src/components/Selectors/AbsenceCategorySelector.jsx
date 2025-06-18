@@ -1,8 +1,8 @@
 export default function AbsenceCategorySelector({isSelectCategoryOpen, closeCategorySelector,setTempAttendanceType, tempAttendanceType, handleCategorySelect}) {
     return (
             <div
-                className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-40 rounded-t-3xl py-6 px-10 flex flex-col flex-start h-min sm:hidden shadow-[0_-1rem_1rem_#0000001f] ${
-                    isSelectCategoryOpen ? "translate-y-0" : "translate-y-[200%]"
+                className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-50 rounded-t-3xl py-6 px-10 flex flex-col flex-start h-min shadow-[0_-1rem_1rem_#0000001f] max-w-170 m-auto ${
+                    isSelectCategoryOpen ? "translate-y-0" : "translate-y-[150%]"
                 }`}
             >
                 <div className="flex justify-center mb-3">
@@ -60,7 +60,7 @@ export default function AbsenceCategorySelector({isSelectCategoryOpen, closeCate
                                 }
                             />
                             <label
-                                htmlFor="retraso"
+                                htmlFor="retardo"
                                 className="text-base font-poppins ml-4 text-gray-700"
                             >
                                 Retardo

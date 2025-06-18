@@ -19,9 +19,10 @@ export default function Absences() {
     const [absences, setAbsences] = useState([]);
     const [absencesBySubject, setAbsencesBySubject] = useState({});
     const [delaysBySubject, setDelaysBySubject] = useState({});
-
     const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
+    
     const loadAbsences = () => {
+        const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
         const stored = JSON.parse(localStorage.getItem("absences")) || [];
 
         // Enriquecer cada ausencia con color y nombre de asignatura
@@ -97,7 +98,9 @@ export default function Absences() {
 
     return (
         <div
-            className="`grid gap-4 xl:grid-cols-3 lg:grid-cols-2"
+            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 ${
+                subjects.length > 0 ? "" : "h-full"
+            }`}
         >
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
@@ -183,7 +186,7 @@ export default function Absences() {
                     )}
                 </>
             ) : (
-                <div className="flex xl:col-span-3 h-[calc(100svh-108px)]">
+                <div className="flex xl:col-span-3">
                     <PageNull
                         title={"Sin faltas"}
                         text={

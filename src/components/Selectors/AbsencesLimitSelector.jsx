@@ -40,11 +40,11 @@ export default function LimitSelector({
 
     return (
         <div
-            className={`fixed bottom-0 right-0 left-0 bg-white transition-transform sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:max-h-100 sm:top-0 sm:rounded-3xl sm:transition-all
-                duration-300 transform z-40 rounded-t-3xl p-10 flex flex-col flex-start h-min shadow-[0_-1rem_1rem_#0000001f] ${
+            className={`fixed bottom-0 right-0 left-0 bg-white transition-transform sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:max-h-100 sm:top-0 sm:rounded-3xl sm:transition-all z-40
+                duration-300 transform rounded-t-3xl p-10 flex flex-col flex-start h-min shadow-[0_-1rem_1rem_#0000001f] ${
                     isLimitSelectorOpen
                         ? "translate-y-0 sm:opacity-100 sm:scale-100"
-                        : "translate-y-[150%] sm:opacity-0 sm:scale-50"
+                        : "translate-y-full sm:opacity-0 sm:scale-50"
                 }`}
         >
             <div className="flex justify-center mb-3 sm:hidden">
@@ -55,7 +55,7 @@ export default function LimitSelector({
                     aria-label="Cerrar selector"
                 >
                     <i
-                        className={`bx bxs-chevron-down text-3xl transition-transform duration-300 ${
+                        className={`bx bxs-chevron-up text-3xl transition-transform duration-300 ${
                             isLimitSelectorOpen ? "rotate-180" : ""
                         }`}
                     ></i>
