@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import AddBtn from "../AddBtn";
 import AbsenceFormModal from "./modals/AbsencesFormModal";
-import AbsenceCard from "../Cards/AbsenceCard";
 import AbsencesPerSubjectCard from "../Cards/AbsencesPerSubjectCard";
 import DelaysPerSubjectCard from "../Cards/DelaysPerSubjectCard";
 import AbsencesLimitSelector from "../Selectors/AbsencesLimitSelector";
 import DelaysLimitSelector from "../Selectors/DelaysLimitSelector";
 import { motion, AnimatePresence } from "framer-motion";
+import RecentAbsencesCard from "../Cards/RecentAbsencesCard";
+import AbsenceCard from "../Cards/AbsenceCard";
 
 export default function Absences() {
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -20,10 +21,21 @@ export default function Absences() {
 
     const loadAbsences = () => {
         const stored = JSON.parse(localStorage.getItem("absences")) || [];
-        setAbsences(stored);
-
         const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
 
+        // Enriquecer cada ausencia con color y nombre de asignatura
+        const enrichedAbsences = stored.map((absence) => {
+            const subject = subjects.find((s) => s.id === absence.subjectId);
+            return {
+                ...absence,
+                subjectColor: subject?.color || "gray",
+                subjectName: subject?.name || "Sin nombre",
+            };
+        });
+
+        setAbsences(enrichedAbsences);
+
+        // Separar por tipo
         const faltas = stored.filter((a) => a.type?.toLowerCase() === "falta");
         const retardos = stored.filter(
             (a) => a.type?.toLowerCase() === "retardo"
@@ -45,9 +57,9 @@ export default function Absences() {
             const {
                 id,
                 name,
-                color = "gray",
+                color,
                 limitOfAbsences = 14,
-                limitOfDelays = 14, // <-- Agrego límite de retrasos aquí
+                limitOfDelays = 14,
             } = s;
             faltasPorAsignatura[id] = {
                 name,
@@ -59,7 +71,7 @@ export default function Absences() {
                 name,
                 count: retardosCount[id] || 0,
                 color,
-                limit: limitOfDelays, // <-- Asigno límite para retrasos
+                limit: limitOfDelays,
             };
         });
 
@@ -67,6 +79,9 @@ export default function Absences() {
         setDelaysBySubject(retardosPorAsignatura);
     };
 
+    const recentAbsences = [...absences].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
     useEffect(() => {
         loadAbsences();
         window.addEventListener("storage", loadAbsences);
@@ -75,13 +90,12 @@ export default function Absences() {
 
     const handleDeleteAbsence = (idToDelete) => {
         const updated = absences.filter((a) => a.id !== idToDelete);
-        setAbsences(updated);
         localStorage.setItem("absences", JSON.stringify(updated));
         loadAbsences();
     };
 
     return (
-        <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2">
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
             <AnimatePresence>
@@ -116,14 +130,14 @@ export default function Absences() {
                 isLimitSelectorOpen={isAbsencesLimitSelectorOpen}
                 setIsLimitSelectorOpen={(open) =>
                     setIsAbsencesLimitSelectorOpen(open)
-                } // <-- Cambio para pasar boolean directo
+                }
                 onLimitsUpdated={loadAbsences}
             />
             <DelaysLimitSelector
                 isLimitSelectorOpen={isDelaysLimitSelectorOpen}
                 setIsLimitSelectorOpen={(open) =>
                     setIsDelaysLimitSelectorOpen(open)
-                } // <-- Igual aquí
+                }
                 onLimitsUpdated={loadAbsences}
             />
             <div className="grid gap-4">
@@ -131,29 +145,33 @@ export default function Absences() {
                     absencesBySubject={absencesBySubject}
                     setIsLimitSelectorOpen={() =>
                         setIsAbsencesLimitSelectorOpen(true)
-                    } // <-- Abrir explícitamente
+                    }
                 />
 
                 <DelaysPerSubjectCard
-                    delaysBySubject={delaysBySubject} // <-- Nombre de prop corregido para ser consistente
+                    delaysBySubject={delaysBySubject}
                     setIsLimitSelectorOpen={() =>
                         setIsDelaysLimitSelectorOpen(true)
-                    } // <-- Abrir explícitamente
+                    }
                 />
             </div>
-            <section>
-                <header className="mb-4">
+            <RecentAbsencesCard
+                absences={absences}
+                handleDeleteAbsence={handleDeleteAbsence}
+            />
+            <article className="lg:col-span-2 xl:col-span-1">
+                <header>
                     <h3 className="font-semibold text-xl font-poppins">
-                        Faltas recientes
+                        Todas
                     </h3>
                 </header>
-                <div className="flex flex-col-reverse gap-4">
-                    {absences.length === 0 ? (
+                <section className="flex flex-col gap-4 mt-4">
+                    {recentAbsences.length === 0 ? (
                         <p className="text-gray-600 font-poppins">
                             No hay faltas registradas.
                         </p>
                     ) : (
-                        absences.map((absence) => (
+                        recentAbsences.map((absence) => (
                             <AbsenceCard
                                 key={absence.id}
                                 absence={absence}
@@ -161,8 +179,8 @@ export default function Absences() {
                             />
                         ))
                     )}
-                </div>
-            </section>
+                </section>
+            </article>
         </div>
     );
 }

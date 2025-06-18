@@ -6,7 +6,7 @@ export default function DelaysPerSubjectCard({
         <article className="min-h-50 w-full shadow-md rounded-2xl p-4 grid grid-rows-[auto_1fr_auto] bg-white">
             <header>
                 <h3 className="font-poppins font-semibold text-lg text-gray-700">
-                    Retrasos por Asignatura
+                    Retardos por Asignatura
                 </h3>
             </header>
 

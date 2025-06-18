@@ -83,7 +83,7 @@ export default function DelaysLimitSelector({
                                 </legend>
                                 <input
                                     type="number"
-                                    min="1"
+                                    min="0"
                                     className="px-5 pb-2 outline-0 w-full font-poppins"
                                     value={subject.limitOfDelays || 0}
                                     onChange={(e) =>

@@ -36,7 +36,6 @@ export default function Subjects() {
             (absence) => absence.subjectId !== idToDelete
         );
         localStorage.setItem("absences", JSON.stringify(updatedAbsences));
-
     };
 
     return (
@@ -62,7 +61,7 @@ export default function Subjects() {
                 toggleFormOpen={handleCloseForm}
             />
 
-            <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <section className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))]">
                 {subjects.length === 0 ? (
                     <p className="text-gray-600 font-poppins">
                         No hay asignaturas guardadas.
@@ -72,7 +71,7 @@ export default function Subjects() {
                         <SubjectCard
                             key={subject.id}
                             subject={subject}
-                            onDelete={handleDeleteSubject} // ← PASAMOS LA FUNCIÓN AQUÍ
+                            onDelete={handleDeleteSubject}
                         />
                     ))
                 )}

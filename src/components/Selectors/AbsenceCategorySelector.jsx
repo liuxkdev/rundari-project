@@ -51,10 +51,10 @@ export default function AbsenceCategorySelector({isSelectCategoryOpen, closeCate
                             <input
                                 type="radio"
                                 name="attendance"
-                                id="retraso"
-                                value="Retraso"
+                                id="retardo"
+                                value="Retardo"
                                 className="w-5 h-5"
-                                checked={tempAttendanceType === "Retraso"}
+                                checked={tempAttendanceType === "Retardo"}
                                 onChange={(e) =>
                                     setTempAttendanceType(e.target.value)
                                 }
@@ -63,7 +63,7 @@ export default function AbsenceCategorySelector({isSelectCategoryOpen, closeCate
                                 htmlFor="retraso"
                                 className="text-base font-poppins ml-4 text-gray-700"
                             >
-                                Retraso
+                                Retardo
                             </label>
                         </div>
                     </form>
