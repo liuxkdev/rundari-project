@@ -22,7 +22,7 @@ export default function SubjectSelector({
     return (
         <div
             className={`fixed bottom-0 right-0 left-0 bg-white transition-transform duration-300 transform z-50 rounded-t-3xl py-6 px-10 flex flex-col flex-start h-min shadow-[0_-1rem_1rem_#0000001f] max-w-170 m-auto ${
-                isSelectSubjectOpen ? "translate-y-0" : "translate-y-[200%]"
+                isSelectSubjectOpen ? "translate-y-0" : "translate-y-[150%]"
             }`}
         >
             <div className="flex justify-center mb-3">
