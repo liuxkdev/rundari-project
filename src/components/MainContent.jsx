@@ -64,7 +64,7 @@ export default function MainContent({ toggleSidebar }) {
                     }
                 ></Route>
             </Routes>
-            <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] overflow-auto p-6 bg-gray-100">
+            <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] overflow-auto bg-gray-100">
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
                         <Route path="/schedule" element={<Schedule />}></Route>

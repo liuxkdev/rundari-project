@@ -66,7 +66,7 @@ export default function Subjects() {
             <section
                 className={`grid gap-4  ${
                     subjects.length > 0
-                        ? "grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]"
+                        ? "grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] p-6"
                         : "grid-cols-1 h-full"
                 }`}
             >

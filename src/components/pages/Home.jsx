@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="flex flex-col items-center mb-6">
+            <div className="flex flex-col items-center my-6">
                 <CurrentDate />
                 <Clock />
             </div>

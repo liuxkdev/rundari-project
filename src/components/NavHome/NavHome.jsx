@@ -3,7 +3,7 @@ import NavHomeLink from "./NavHomeLink";
 export default function NavHome() {
     return (
         <nav className="w-full flex justify-center sm:hidden">
-            <ul className="flex overflow-x-auto gap-4 rounded-lg">
+            <ul className="flex overflow-x-auto gap-4 px-4">
                 <li>
                     <NavHomeLink
                         target="/schedule"

@@ -20,7 +20,7 @@ export default function Absences() {
     const [absencesBySubject, setAbsencesBySubject] = useState({});
     const [delaysBySubject, setDelaysBySubject] = useState({});
     const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
-    
+
     const loadAbsences = () => {
         const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
         const stored = JSON.parse(localStorage.getItem("absences")) || [];
@@ -98,7 +98,7 @@ export default function Absences() {
 
     return (
         <div
-            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 ${
+            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 p-6 ${
                 subjects.length > 0 ? "" : "h-full"
             }`}
         >
