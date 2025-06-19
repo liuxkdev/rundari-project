@@ -38,7 +38,7 @@ export default function AbsenceCard({ absence, onDelete }) {
                 onClick={() => onDelete(id)}
                 className="justify-self-end"
             >
-                <i className="bxr bx-trash text-xl cursor-pointer"></i>
+                <i className="bxr bx-trash text-2xl cursor-pointer text-gray-500"></i>
             </button>
         </div>
     );

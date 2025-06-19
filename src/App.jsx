@@ -1,11 +1,17 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import MainContent from "./components/MainContent";
 import { BrowserRouter as Router } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const stored = JSON.parse(localStorage.getItem("tasks")) || [];
+        setTasks(stored);
+    }, []);
 
     return (
         <Router>
@@ -13,7 +19,9 @@ function App() {
                 <Sidebar
                     isOpen={sidebarOpen}
                     toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+                    tasks={tasks}
                 />
+
                 <AnimatePresence>
                     {sidebarOpen && (
                         <motion.div
@@ -30,9 +38,12 @@ function App() {
 
                 <MainContent
                     toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+                    setTasks={setTasks}
+                    tasks={tasks}
                 />
             </div>
         </Router>
     );
 }
+
 export default App;

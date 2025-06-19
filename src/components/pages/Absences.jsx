@@ -98,7 +98,7 @@ export default function Absences() {
 
     return (
         <div
-            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 p-6${
+            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 p-6 ${
                 subjects.length > 0 ? "" : "h-full"
             }`}
         >

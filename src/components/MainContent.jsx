@@ -8,7 +8,7 @@ import Absences from "./pages/Absences";
 import Notifications from "./pages/Notifications";
 import Config from "./pages/Config";
 
-export default function MainContent({ toggleSidebar }) {
+export default function MainContent({ toggleSidebar, tasks, setTasks }) {
     return (
         <main className="grid grid-rows-[auto_1fr] h-[100dvh]">
             <Routes>
@@ -17,13 +17,13 @@ export default function MainContent({ toggleSidebar }) {
                     element={
                         <Header title="Inicio" toggleSidebar={toggleSidebar} />
                     }
-                ></Route>
+                />
                 <Route
                     path="/schedule"
                     element={
                         <Header title="Horario" toggleSidebar={toggleSidebar} />
                     }
-                ></Route>
+                />
                 <Route
                     path="/subjects"
                     element={
@@ -32,19 +32,19 @@ export default function MainContent({ toggleSidebar }) {
                             toggleSidebar={toggleSidebar}
                         />
                     }
-                ></Route>
+                />
                 <Route
                     path="/tasks"
                     element={
                         <Header title="Tareas" toggleSidebar={toggleSidebar} />
                     }
-                ></Route>
+                />
                 <Route
                     path="/absences"
                     element={
                         <Header title="Faltas" toggleSidebar={toggleSidebar} />
                     }
-                ></Route>
+                />
                 <Route
                     path="/notifications"
                     element={
@@ -53,7 +53,7 @@ export default function MainContent({ toggleSidebar }) {
                             toggleSidebar={toggleSidebar}
                         />
                     }
-                ></Route>
+                />
                 <Route
                     path="/settings"
                     element={
@@ -62,24 +62,22 @@ export default function MainContent({ toggleSidebar }) {
                             toggleSidebar={toggleSidebar}
                         />
                     }
-                ></Route>
+                />
             </Routes>
+
             <section className="rounded-t-xl sm:inset-shadow-[0.25rem_0.25rem_0.5rem_#22222211] overflow-auto bg-gray-100">
-                    <Routes>
-                        <Route path="/" element={<Home />}></Route>
-                        <Route path="/schedule" element={<Schedule />}></Route>
-                        <Route path="/subjects" element={<Subjects />}></Route>
-                        <Route path="/tasks" element={<Tasks />}></Route>
-                        <Route path="/absences" element={<Absences />}></Route>
-                        <Route
-                            path="/notifications"
-                            element={<Notifications />}
-                        ></Route>
-                        <Route
-                            path="/settings"
-                            element={<Config />}
-                        ></Route>
-                    </Routes>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/schedule" element={<Schedule />} />
+                    <Route path="/subjects" element={<Subjects />} />
+                    <Route
+                        path="/tasks"
+                        element={<Tasks tasks={tasks} setTasks={setTasks} />}
+                    />
+                    <Route path="/absences" element={<Absences />} />
+                    <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/settings" element={<Config />} />
+                </Routes>
             </section>
         </main>
     );

@@ -2,7 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SubjectSelector from "../../Selectors/SubjectSelector";
 
-export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
+export default function TaskFormModal({
+    isFormOpen,
+    toggleFormOpen,
+    tasks,
+    setTasks,
+}) {
     const [taskName, setTaskName] = useState("");
     const [subject, setSubject] = useState(null);
     const [tempSubject, setTempSubject] = useState(null);
@@ -29,17 +34,19 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
 
         const task = {
             id: Date.now(),
-            taskName: taskName.trim(),
-            subjectName: subject.name,
-            subjectColor: subject.color || "blue",
+            name: taskName.trim(),
+            subject: {
+                name: subject.name,
+                color: subject.color || "blue",
+            },
             deadline,
             description: description.trim(),
             completed: false,
         };
 
-        const saved = JSON.parse(localStorage.getItem("tasks")) || [];
-        saved.push(task);
-        localStorage.setItem("tasks", JSON.stringify(saved));
+        const updated = [...tasks, task];
+        localStorage.setItem("tasks", JSON.stringify(updated));
+        setTasks(updated);
 
         handleClose();
     };
@@ -47,6 +54,11 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
     const handleClose = () => {
         toggleFormOpen();
         setIsSelectSubjectOpen(false);
+        setTaskName("");
+        setSubject(null);
+        setTempSubject(null);
+        setDeadline("");
+        setDescription("");
     };
 
     const closeSubjectSelector = () => {
@@ -112,7 +124,7 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
                             <div className="grid grid-cols-[50px_1fr] items-center border-b-1 border-gray-500 py-4">
                                 <i className="bx bx-calendar text-2xl mr-8"></i>
                                 <input
-                                    type="date"
+                                    type="datetime-local"
                                     className="text-base outline-0 font-poppins text-gray-700 w-full"
                                     value={deadline}
                                     onChange={(e) =>
@@ -132,7 +144,7 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
                                     onChange={(e) =>
                                         setDescription(e.target.value)
                                     }
-                                    rows={4}
+                                    rows={3}
                                     required
                                 />
                             </div>
@@ -141,7 +153,7 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
                             <div className="flex mt-8 gap-4">
                                 <button
                                     onClick={handleClose}
-                                    className="px-4 py-2 text-base font-poppins w-full text-logo border border-logo rounded-lg hidden sm:block"
+                                    className="px-4 py-2 text-base font-poppins w-full text-logo border border-logo rounded-lg hidden sm:block cursor-pointer"
                                     type="button"
                                 >
                                     Cancelar
@@ -166,7 +178,7 @@ export default function TaskFormModal({ isFormOpen, toggleFormOpen }) {
                         animate={{ opacity: 0.2 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-black backdrop-blur-sm z-40"
+                        className="fixed inset-0 bg-black backdrop-blur-sm z-50"
                         onClick={closeSubjectSelector}
                     />
                 )}
