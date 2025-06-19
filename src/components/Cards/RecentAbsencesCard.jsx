@@ -14,7 +14,7 @@ export default function RecentAbsencesCard({ recentAbsences, handleDeleteAbsence
                         No hay faltas registradas.
                     </p>
                 ) : (
-                    recentAbsences.map((absence) => (
+                    recentAbsences.slice(0,5).map((absence) => (
                         <RecentAbsence
                             key={absence.id}
                             absence={absence}

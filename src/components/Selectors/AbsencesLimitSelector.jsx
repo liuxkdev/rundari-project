@@ -83,9 +83,9 @@ export default function LimitSelector({
                                 </legend>
                                 <input
                                     type="number"
-                                    min="1"
+                                    min="0"
                                     className="px-5 pb-2 outline-0 w-full font-poppins"
-                                    value={subject.limitOfAbsences || 14}
+                                    value={subject.limitOfAbsences || 0}
                                     onChange={(e) =>
                                         handleLimitChange(
                                             subject.id,

@@ -37,7 +37,6 @@ export default function AbsenceFormModal({
             alert("Selecciona una asignatura antes de continuar.");
         }
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -52,7 +51,7 @@ export default function AbsenceFormModal({
             subjectId: subject.id,
             subjectName: subject.name,
             reason: reason.trim(),
-            date,
+            date, // 👈 GUARDADO CORRECTO como string YYYY-MM-DD
         };
 
         const saved = JSON.parse(localStorage.getItem("absences")) || [];
@@ -60,7 +59,7 @@ export default function AbsenceFormModal({
         localStorage.setItem("absences", JSON.stringify(saved));
 
         handleClose();
-        onLimitsUpdate; // Llamar a la función de actualización
+        onLimitsUpdate(); // ✅ Ejecutar la función correctamente
     };
 
     const handleClose = () => {
@@ -188,7 +187,7 @@ export default function AbsenceFormModal({
                         animate={{ opacity: 0.2 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-black backdrop-blur-sm z-40"
+                        className="fixed inset-0 bg-black backdrop-blur-sm z-50"
                         onClick={() => {
                             closeCategorySelector();
                             closeSubjectSelector();

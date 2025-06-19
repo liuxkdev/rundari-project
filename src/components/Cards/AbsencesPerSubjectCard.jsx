@@ -3,7 +3,7 @@ export default function AbsencesPerSubjectCard({
     setIsLimitSelectorOpen,
 }) {
     return (
-        <article className="min-h-50 w-full shadow-md rounded-2xl p-4 grid grid-rows-[auto_1fr_auto] bg-white">
+        <article className="min-h-50 w-full shadow-md rounded-2xl p-4 grid grid-rows-[auto_1fr_auto] bg-white h-min">
             <header>
                 <h3 className="font-poppins font-semibold text-xl text-gray-700">
                     Faltas por Asignatura

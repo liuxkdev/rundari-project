@@ -98,7 +98,7 @@ export default function Absences() {
 
     return (
         <div
-            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 p-6 ${
+            className={`grid gap-4 xl:grid-cols-3 lg:grid-cols-2 p-6${
                 subjects.length > 0 ? "" : "h-full"
             }`}
         >
@@ -148,7 +148,7 @@ export default function Absences() {
             />
             {subjects.length > 0 ? (
                 <>
-                    <div className="grid gap-4">
+                    <div className="grid gap-4 grid-rows-[min-content] row-start-2 sm:row-start-1">
                         <AbsencesPerSubjectCard
                             absencesBySubject={absencesBySubject}
                             setIsLimitSelectorOpen={() =>
