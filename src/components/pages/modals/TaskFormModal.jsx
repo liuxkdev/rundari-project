@@ -68,10 +68,11 @@ export default function TaskFormModal({
     return (
         <>
             <div
-                className={`fixed inset-0 bg-white transition-transform sm:transition-all duration-300 transform z-50 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl shadow-lg ${
+                className={`fixed inset-0 bg-white transition-transform sm:transition-all
+                duration-300 transform z-40 p-8 sm:w-full sm:max-w-150 sm:m-auto sm:h-min sm:rounded-3xl shadow-lg ${
                     isFormOpen
-                        ? "translate-y-0 sm:scale-100 sm:opacity-100"
-                        : "translate-y-full sm:scale-50 sm:opacity-0"
+                        ? "translate-y-0 sm:scale-100 sm:opacity-100 "
+                        : "translate-y-full sm:scale-50 sm:opacity-0 "
                 }`}
             >
                 <div className="flex justify-between items-center sm:hidden">

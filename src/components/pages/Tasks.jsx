@@ -1,13 +1,13 @@
 import { useState } from "react";
 import AddBtn from "../AddBtn";
-import TaskFormModal from "./modals/TasksFormModal";
+import TaskFormModal from "./modals/TaskFormModal";
 import { motion, AnimatePresence } from "framer-motion";
 import TaskCard from "../Cards/TaskCard";
 import PageNull from "../PageNull";
-import { div } from "framer-motion/m";
 
 export default function Tasks({ tasks, setTasks }) {
     const [isFormOpen, setIsFormOpen] = useState(false);
+    console.log("Modal abierto:", isFormOpen);
     const [category, setCategory] = useState("Todas");
 
     const toggleComplete = (id) => {
@@ -58,7 +58,6 @@ export default function Tasks({ tasks, setTasks }) {
                     )}
                 </ul>
             </nav>
-            <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
@@ -76,27 +75,6 @@ export default function Tasks({ tasks, setTasks }) {
                     className="p-6 grid gap-4
                         lg:grid-cols-2 xl:grid-cols-3"
                 >
-                    <AnimatePresence>
-                        {isFormOpen && (
-                            <motion.div
-                                key="overlay"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.2 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="fixed inset-0 bg-black backdrop-blur-sm z-40"
-                                onClick={() => setIsFormOpen(false)}
-                            />
-                        )}
-                    </AnimatePresence>
-
-                    <TaskFormModal
-                        isFormOpen={isFormOpen}
-                        toggleFormOpen={() => setIsFormOpen(false)}
-                        tasks={tasks}
-                        setTasks={setTasks}
-                    />
-
                     {filteredTasks.map((task) => (
                         <TaskCard
                             key={task.id}
@@ -107,6 +85,25 @@ export default function Tasks({ tasks, setTasks }) {
                     ))}
                 </div>
             )}
+            <AnimatePresence>
+                {isFormOpen && (
+                    <motion.div
+                        key="overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.2 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-black backdrop-blur-sm z-40"
+                        onClick={() => setIsFormOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+            <TaskFormModal
+                isFormOpen={isFormOpen}
+                toggleFormOpen={() => setIsFormOpen(false)}
+                tasks={tasks}
+                setTasks={setTasks}
+            />
         </>
     );
 }

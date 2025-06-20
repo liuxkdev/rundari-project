@@ -2,9 +2,16 @@ import AddBtn from "../AddBtn";
 import ClassFormModal from "./modals/ClassFormModal";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import WeeklySchedule from "../WeeklySchedule/WeeklySchedule";
 
-export default function Subjects() {
+export default function Schedule() {
     const [isFormOpen, setIsFormOpen] = useState(false);
+
+    // Estado para las clases, cargando de localStorage o array vacío
+    const [classes, setClasses] = useState(() => {
+        const saved = localStorage.getItem("classes");
+        return saved ? JSON.parse(saved) : [];
+    });
 
     return (
         <>
@@ -22,9 +29,14 @@ export default function Subjects() {
                     />
                 )}
             </AnimatePresence>
-            <ClassFormModal isFormOpen={isFormOpen} 
-            toggleFormOpen={() => setIsFormOpen(!isFormOpen)}
+            <ClassFormModal
+                isFormOpen={isFormOpen}
+                toggleFormOpen={() => setIsFormOpen(!isFormOpen)}
+                classes={classes}
+                setClasses={setClasses}
             />
+
+            <WeeklySchedule classes={classes} />
         </>
     );
 }
