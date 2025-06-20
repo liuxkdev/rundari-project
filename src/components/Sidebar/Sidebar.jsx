@@ -15,7 +15,7 @@ export default function Sidebar({ isOpen, toggleSidebar, tasks = [] }) {
         >
             <header className="px-4 pt-4">
                 <div className="flex justify-between border-b-gray-300 border-b pb-4 items-center">
-                    <h1 className="font-savate text-xl text-logo font-semibold">
+                    <h1 className="font-poppins text-xl text-logo font-bold">
                         RUNDARI
                     </h1>
                     <button
@@ -31,7 +31,7 @@ export default function Sidebar({ isOpen, toggleSidebar, tasks = [] }) {
 
             <footer className="p-4 max-w-full">
                 <div className="border-t-gray-300 border-t pt-4">
-                    <div className="p-3 bg-gray-100 rounded-xl">
+                    <div className="p-3 bg-gray-100 rounded-xl overflow-hidden">
                         <p className="text-xs text-gray-500 font-poppins mb-1">
                             Próxima entrega
                         </p>
@@ -41,18 +41,18 @@ export default function Sidebar({ isOpen, toggleSidebar, tasks = [] }) {
                                 <p className="font-poppins text-sm font-medium truncate">
                                     {upcomingTask.name}
                                 </p>
-                                <div className="flex items-center gap-2 mt-1">
+                                <div className="grid grid-cols-[12px_1fr] items-center gap-2 mt-1">
                                     <span
                                         className={`w-3 h-3 rounded-full bgcolor-${upcomingTask.subject.color}`}
                                     ></span>
-                                    <span className="text-xs text-gray-500 font-poppins truncate">
+                                    <span className="text-xs text-gray-500 font-poppins">
                                         {upcomingTask.subject?.name ||
                                             "Sin materia"}
                                     </span>
                                 </div>
                             </div>
                         ) : (
-                            <p className="font-poppins text-sm font-medium text-gray-400">
+                            <p className="font-poppins text-sm font-medium text-gray-400 ">
                                 Sin tareas pendientes
                             </p>
                         )}

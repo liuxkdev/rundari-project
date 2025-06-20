@@ -1,14 +1,6 @@
 export default function TaskCard({ task, onToggleComplete, onDelete }) {
-    const {
-        id,
-        name,
-        subject,
-        deadline, // formato completo: "YYYY-MM-DDTHH:mm"
-        description,
-        completed,
-    } = task;
+    const { id, name, subject, deadline, description, completed } = task;
 
-    // 🔧 Función para parsear fecha y hora como local
     const parseLocalDateTime = (datetimeStr) => {
         const [datePart, timePart] = datetimeStr.split("T");
         const [year, month, day] = datePart.split("-").map(Number);
@@ -20,7 +12,6 @@ export default function TaskCard({ task, onToggleComplete, onDelete }) {
         const hoy = new Date();
         const fecha = parseLocalDateTime(fechaString);
 
-        // Normalizar a solo fecha local
         const toLocalDateOnly = (d) =>
             new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
@@ -51,9 +42,30 @@ export default function TaskCard({ task, onToggleComplete, onDelete }) {
         return `${fechaTexto} a las ${horaTexto}`;
     };
 
+    // 🔧 Función auxiliar para saber si está atrasada
+    const estaAtrasada = () => {
+        const fechaLimite = parseLocalDateTime(deadline);
+        const ahora = new Date();
+        return !completed && fechaLimite < ahora;
+    };
+
+    // 🔧 Texto dinámico para el estado
+    const estadoTexto = completed
+        ? "Completada"
+        : estaAtrasada()
+        ? "Atrasada"
+        : "Pendiente";
+
+    // 🔧 Colores para cada estado
+    const estadoClase = completed
+        ? "bg-green text-green-800"
+        : estaAtrasada()
+        ? "bg-red-200 text-red-800"
+        : "bg-yellow text-yellow-800";
+
     return (
         <article
-            className={`bg-white shadow-md rounded-xl p-4 grid border-l-8 border-logo grid-cols-[1fr_100px] items-center  gap-4 h-min`}
+            className={`bg-white shadow-md rounded-xl p-4 grid border-l-8 border-logo grid-cols-[1fr_100px] items-center gap-4 h-min`}
         >
             <div className="overflow-hidden">
                 <div className="grid items-center gap-x-4 grid-rows-2 grid-cols-[auto_1fr]">
@@ -74,16 +86,16 @@ export default function TaskCard({ task, onToggleComplete, onDelete }) {
                     >
                         {name}
                     </h3>
-                    <div className="col-start-2 flex items-center">
+                    <div className="col-start-2 grid grid-cols-[16px_1fr] gap-2">
                         <div
-                            className={`h-4 w-4 rounded-full mr-2 bgcolor-${subject.color}`}
+                            className={`h-4 w-4 rounded-full bgcolor-${subject.color}`}
                         ></div>
-                        <p className="text-sm font-poppins text-gray-500">
+                        <p className="text-sm font-poppins text-gray-500 truncate">
                             {subject.name}
                         </p>
                     </div>
                     <p
-                        className="text-sm font-poppins text-gray-700 col-start-2 line-clamp-3 overflow-hidden "
+                        className="text-sm font-poppins text-gray-700 col-start-2 line-clamp-3 overflow-hidden"
                         title={description}
                     >
                         {description}
@@ -93,14 +105,11 @@ export default function TaskCard({ task, onToggleComplete, onDelete }) {
 
             <div className="flex flex-col items-end justify-start h-full">
                 <p
-                    className={`text-sm px-2 py-1 rounded font-poppins ${
-                        completed
-                            ? "bg-green text-green-800"
-                            : "bg-yellow text-yellow-800"
-                    }`}
+                    className={`text-sm px-2 py-1 rounded font-poppins ${estadoClase}`}
                 >
-                    {completed ? "Completada" : "Pendiente"}
+                    {estadoTexto}
                 </p>
+
                 <button
                     onClick={() => onDelete(id)}
                     className="text-gray-500 text-2xl cursor-pointer mt-4"

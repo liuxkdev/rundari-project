@@ -144,6 +144,12 @@ export default function TaskFormModal({
                                     onChange={(e) =>
                                         setDescription(e.target.value)
                                     }
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && !e.shiftKey) {
+                                            e.preventDefault(); // evitar salto de línea
+                                            handleSubmit(e); // enviar formulario
+                                        }
+                                    }}
                                     rows={3}
                                     required
                                 />
