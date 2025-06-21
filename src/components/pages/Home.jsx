@@ -3,7 +3,6 @@ import Clock from "../Clock";
 import NavHome from "../NavHome/NavHome";
 
 export default function Home() {
-    
 
     return (
         <>

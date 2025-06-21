@@ -1,5 +1,7 @@
-export default function ClassBlock({ classData }) {
-    const { subject, start, end, color } = classData;
+import { sub } from "framer-motion/client";
+
+export default function ClassBlock({ classData, onClick }) {
+    const { subject, start, end } = classData;
 
     const startHour = parseInt(start.split(":")[0]);
     const startMin = parseInt(start.split(":")[1]);
@@ -12,13 +14,14 @@ export default function ClassBlock({ classData }) {
 
     return (
         <div
-            className={`bgcolor-${subject.color} text-white text-xs absolute left-0 right-0 p-2 rounded-lg shadow z-5 overflow-hidden truncate`}
-            style={{ top: `${topOffset}px`, height: `${blockHeight}px` }}
+            className={`text-white text-xs absolute left-0 right-0 p-2 rounded-lg shadow z-5 overflow-hidden truncate cursor-pointer bgcolor-${subject.color}`}
+            style={{
+                top: `${topOffset}px`,
+                height: `${blockHeight}px`,
+            }}
+            onClick={onClick}
         >
             <strong className="truncate">{subject.name}</strong>
-            <span>
-                {start} - {end}
-            </span>
         </div>
     );
 }

@@ -51,8 +51,10 @@ export default function ClassFormModal({
         const newClass = {
             id: Date.now(),
             subject: {
+                id: subject.id,
                 name: subject.name,
                 color: subject.color || "blue",
+                teacher: subject.teacher 
             },
             day,
             start,

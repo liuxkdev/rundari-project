@@ -6,6 +6,7 @@ import WeeklySchedule from "../WeeklySchedule/WeeklySchedule";
 
 export default function Schedule() {
     const [isFormOpen, setIsFormOpen] = useState(false);
+    
 
     // Estado para las clases, cargando de localStorage o array vacío
     const [classes, setClasses] = useState(() => {
@@ -36,7 +37,11 @@ export default function Schedule() {
                 setClasses={setClasses}
             />
 
-            <WeeklySchedule classes={classes} />
+            <WeeklySchedule 
+                classes={classes}
+                setClasses={setClasses}
+            />
+
         </>
     );
 }

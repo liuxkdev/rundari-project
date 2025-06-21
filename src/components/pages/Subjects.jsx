@@ -38,6 +38,20 @@ export default function Subjects() {
             (absence) => absence.subjectId !== idToDelete
         );
         localStorage.setItem("absences", JSON.stringify(updatedAbsences));
+
+        // Actualizar tareas (tasks)
+        const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const updatedTasks = storedTasks.filter(
+            (task) => task.subjectId !== idToDelete
+        );
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+        // Actualizar clases (classes)
+        const storedClasses = JSON.parse(localStorage.getItem("classes")) || [];
+        const updatedClasses = storedClasses.filter(
+            (classItem) => classItem.subject.id !== idToDelete
+        );
+        localStorage.setItem("classes", JSON.stringify(updatedClasses));
     };
 
     return (

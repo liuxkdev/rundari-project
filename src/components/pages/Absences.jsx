@@ -186,7 +186,7 @@ export default function Absences() {
                     )}
                 </>
             ) : (
-                <div className="flex xl:col-span-3">
+                <div className="flex lg:col-span-2 w-full xl:col-span-3">
                     <PageNull
                         title={"Sin faltas"}
                         text={

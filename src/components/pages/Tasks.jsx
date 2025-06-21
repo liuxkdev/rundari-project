@@ -62,7 +62,7 @@ export default function Tasks({ tasks, setTasks }) {
             <AddBtn toggleFormOpen={() => setIsFormOpen(true)} />
 
             {filteredTasks.length === 0 ? (
-                <div className="h-[calc(100%-52px)]">
+                <div className="h-[85%]">
                     <PageNull
                         title={`Sin tareas ${
                             category === "Todas" ? "" : category.toLowerCase()
