@@ -32,6 +32,7 @@ export default function WeeklySchedule({ classes, setClasses }) {
                         <div
                             key={day}
                             className="text-center py-2 font-semibold font-poppis sticky top-0"
+                            translate="no"
                         >
                             {day === "Miércoles" || day === "Martes"
                                 ? day.slice(0, 2)
