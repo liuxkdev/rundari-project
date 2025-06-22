@@ -12,7 +12,7 @@ const days = [
     "Viernes",
     "Sábado",
 ];
-const hours = Array.from({ length: 24 }, (_, i) => i); // 0 a 23
+const hours = Array.from({ length: 25 }, (_, i) => i); // 0 a 23
 
 export default function WeeklySchedule({ classes, setClasses }) {
     const [isModalOpen, setIsModalOpen] = useState(false);

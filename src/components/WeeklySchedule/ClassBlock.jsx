@@ -1,7 +1,8 @@
-import { sub } from "framer-motion/client";
 
 export default function ClassBlock({ classData, onClick }) {
+
     const { subject, start, end } = classData;
+
 
     const startHour = parseInt(start.split(":")[0]);
     const startMin = parseInt(start.split(":")[1]);
