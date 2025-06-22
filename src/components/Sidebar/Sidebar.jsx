@@ -15,7 +15,7 @@ export default function Sidebar({ isOpen, toggleSidebar, tasks = [] }) {
         >
             <header className="px-4 pt-4">
                 <div className="flex justify-between border-b-gray-300 border-b pb-4 items-center">
-                    <h1 className="font-poppins text-xl text-logo font-bold">
+                    <h1 className="font-savate text-xl text-logo font-bold">
                         RUNDARI
                     </h1>
                     <button
